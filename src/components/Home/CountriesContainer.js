@@ -10,7 +10,7 @@ export class CountriesContainer extends Component {
         content = countries.length > 0 ? 
         countries.map((country, index) => (
             <CountryCard key={index} country={country} />
-          )) : <p>No search result found. Try another!</p>
+          )) : null
         return (
             <div className="row">
                 {content}

@@ -1,4 +1,4 @@
-import {SEARCH_COUNTRY} from '../actions/types'; 
+import {SEARCH_COUNTRY,  FETCH_COUNTRIES} from '../actions/types'; 
 
 const initialState = {
     text:"", 
@@ -7,7 +7,7 @@ const initialState = {
     country:[]
 }
 
-export default function(state = initialState,action) {
+export const searchReducer =(state = initialState,action) => {
     switch(action.type){
         case SEARCH_COUNTRY: 
         return{
@@ -15,9 +15,15 @@ export default function(state = initialState,action) {
             text: action.payload, 
             loading: false
         }
-        default: {
-            return state;
+        case FETCH_COUNTRIES: 
+        return{
+            ...state, 
+            countries: action.payload
         }
+        default: 
+         return state; 
        
     }
 }
+
+export default searchReducer;

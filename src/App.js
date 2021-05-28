@@ -1,33 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
-  Switch,
   Route
 } from "react-router-dom";
 import Header from './components/layout/Header/Header';
 import Footer from './components/layout/Footer/Footer';
+import Landings from './components/Home/Landings';
+import {Provider} from 'react-redux';
+import store from './store'; 
 
 function App() {
   return (
+    <Provider store={store}>
     <Router>
+    <div>
       <Header />
-      <Switch>
-        <Route path="/home">
-          {/* <Home/> */}
-        </Route>
-        <Route path='/country/:countryName'>
-          {/* <CountryDetail></CountryDetail> */}
-        </Route>
-        <Route exact path="/">
-          {/* <Home/> */}
-        </Route>
-        <Route path="*">
-          {/* <NoMatch/> */}
-        </Route>
-      </Switch>
-      <Footer/>
-    </Router>
+      <Landings/>
+      {/* <Route exact path="/" component={Landing} />
+      <Route exact path="/movie/:id" component={Movie} /> */}
+      <Footer />
+    </div>
+  </Router>
+  </Provider>
   );
 }
 
